@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RYAN HACKING - CyberLab</title>
+<style>
+body{margin:0;background:#030806;color:#eafff3;font-family:Arial;text-align:center}
+header{padding:25px;border-bottom:1px solid #00ff88}
+h1{color:#00ff88;text-shadow:0 0 15px #00ff88}
+main{padding:35px 15px}
+.card{max-width:500px;margin:20px auto;padding:25px;background:#0b1710;border:1px solid #00ff88;border-radius:12px;box-shadow:0 0 15px #00ff8840}
+h2{color:#00ff88}
+a{color:#00ff88;text-decoration:none}
+a:hover{text-shadow:0 0 10px #00ff88}
+footer{padding:25px;color:#8aa99a}
+</style>
+</head>
+<body>
+<header>
+<h1>RYAN HACKING</h1>
+<p>CYBERSECURITY LABORATORY</p>
+</header>
+<main>
+<h2>MON LABORATOIRE</h2>
+<div class="card">
+<h2>01 - LINUX</h2>
+<p>Apprendre les commandes et comprendre les systèmes Linux.</p>
+</div>
+<div class="card">
+<h2>02 - WEB SECURITY</h2>
+<p>Découvrir les failles web et apprendre à protéger les applications.</p>
+</div>
+<div class="card">
+<h2>03 - NETWORK SECURITY</h2>
+<p>Comprendre les réseaux et leurs mécanismes de protection.</p>
+</div>
+<p><a href="index.html">← RETOUR À L'ACCUEIL</a></p>
+</main>
+<footer>© 2026 RYAN HACKING</footer>
+
+<section id="FORMATION-CYBER" style="max-width:650px;margin:40px auto;padding:25px;background:#0b1710;border:1px solid #00ff88;border-radius:12px;color:white;">
+<h2 style="color:#00ff88;text-align:center;">FORMATION CYBER</h2>
+<p>Quiz Linux : teste tes connaissances !</p>
+
+<div style="margin:20px 0;">
+<p><b>1. Quelle commande affiche le dossier actuel ?</b></p>
+<button onclick="repondre(1,0)">ls</button>
+<button onclick="repondre(1,1)">pwd</button>
+<button onclick="repondre(1,0)">whoami</button>
+</div>
+
+<div style="margin:20px 0;">
+<p><b>2. Quelle commande liste les fichiers ?</b></p>
+<button onclick="repondre(2,1)">ls</button>
+<button onclick="repondre(2,0)">cd</button>
+<button onclick="repondre(2,0)">pwd</button>
+</div>
+
+<div style="margin:20px 0;">
+<p><b>3. Quelle commande affiche ton nom d'utilisateur ?</b></p>
+<button onclick="repondre(3,0)">mkdir</button>
+<button onclick="repondre(3,0)">clear</button>
+<button onclick="repondre(3,1)">whoami</button>
+</div>
+
+<p id="score" style="color:#00ff88;font-weight:bold;">Score : 0/3</p>
+<p id="resultat"></p>
+</section>
+
+<script>
+let bonnes = [false,false,false];
+function repondre(q, bonne) {
+ bonnes[q-1] = bonne === 1;
+ let total = bonnes.filter(Boolean).length;
+ document.getElementById("score").textContent = "Score : " + total + "/3";
+ document.getElementById("resultat").textContent =
+ total === 3 ? "Excellent ! Toutes les réponses sont correctes." :
+ "Continue, tu peux encore progresser !";
+}
+</script>
+
+
+<section id="SIMULATEUR-LINUX-RYAN" style="max-width:650px;margin:40px auto;padding:22px;background:#020604;border:1px solid #00ff88;border-radius:12px;box-shadow:0 0 18px #00ff8840;">
+<h2 style="color:#00ff88;text-align:center;">LINUX SIMULATOR</h2>
+<div id="linux-output" style="height:220px;overflow:auto;background:#000;color:#00ff88;padding:12px;font-family:monospace;white-space:pre-wrap;">Bienvenue dans le simulateur Linux RYAN.
+Tape help pour voir les commandes disponibles.
+</div>
+<div style="display:flex;gap:8px;margin-top:12px;">
+<span style="color:#00ff88;">$</span>
+<input id="linux-input" placeholder="Tape une commande..." style="flex:1;min-width:0;background:#101a13;color:#00ff88;border:1px solid #00ff88;padding:10px;">
+<button id="linux-run" style="background:#00ff88;border:0;padding:10px;">RUN</button>
+</div>
+</section>
+<script>
+// SIMULATEUR-LINUX-RYAN : commandes fictives, sans accès au système
+const out = document.getElementById("linux-output");
+const inp = document.getElementById("linux-input");
+let dossier = "/home/ryan";
+
+function executerDemo() {
+ const c = inp.value.trim();
+ const commandes = {
+  help: "Commandes : help, pwd, ls, whoami, cd, clear, date",
+  pwd: dossier,
+  ls: "Desktop  Documents  Downloads  Projects",
+  whoami: "ryan",
+  date: "Date fictive du simulateur",
+  cd: "Utilisation simulée : cd Documents"
+ };
+ if (c === "clear") {
+  out.textContent = "";
+ } else {
+  out.textContent += "\nryan@linux:~$ " + c + "\n" +
+   (commandes[c] || "Commande inconnue. Tape help.") + "\n";
+ }
+ out.scrollTop = out.scrollHeight;
+ inp.value = "";
+}
+document.getElementById("linux-run").addEventListener("click", executerDemo);
+inp.addEventListener("keydown", e => {
+ if (e.key === "Enter") executerDemo();
+});
+</script>
+
+
+<section id="RYAN-WEB-SECURITY" style="max-width:650px;margin:40px auto;padding:25px;background:#0b1710;border:1px solid #00ff88;border-radius:12px;color:white;">
+<h2 style="color:#00ff88;text-align:center;">WEB SECURITY LAB</h2>
+<p>Apprends à reconnaître les erreurs de sécurité dans une application web.</p>
+
+<div style="margin:25px 0;">
+<h3 style="color:#00ff88;">Exercice 1 : Mot de passe</h3>
+<p>Quel mot de passe est le plus difficile à deviner ?</p>
+<button onclick="webAnswer(1,0)">123456</button>
+<button onclick="webAnswer(1,1)">Une phrase longue et unique</button>
+<button onclick="webAnswer(1,0)">password</button>
+<p id="web-result-1"></p>
+</div>
+
+<div style="margin:25px 0;">
+<h3 style="color:#00ff88;">Exercice 2 : Formulaire</h3>
+<p>Pourquoi faut-il vérifier les données saisies dans un formulaire ?</p>
+<button onclick="webAnswer(2,1)">Pour éviter les données invalides ou dangereuses</button>
+<button onclick="webAnswer(2,0)">Pour rendre le texte plus joli</button>
+<button onclick="webAnswer(2,0)">Pour accélérer l'écran</button>
+<p id="web-result-2"></p>
+</div>
+
+<div style="margin:25px 0;">
+<h3 style="color:#00ff88;">Exercice 3 : Protection</h3>
+<p>Où doit-on vérifier les données d'un formulaire ?</p>
+<button onclick="webAnswer(3,0)">Uniquement dans le navigateur</button>
+<button onclick="webAnswer(3,1)">Dans le navigateur ET sur le serveur</button>
+<button onclick="webAnswer(3,0)">Nulle part</button>
+<p id="web-result-3"></p>
+</div>
+
+<p id="web-score" style="color:#00ff88;font-weight:bold;">Score : 0/3</p>
+</section>
+
+<script>
+// RYAN-WEB-SECURITY : quiz éducatif
+const webAnswers = [false,false,false];
+function webAnswer(q, correct) {
+ webAnswers[q-1] = correct === 1;
+ document.getElementById("web-result-" + q).textContent =
+ correct === 1 ? "Bonne réponse !" : "Pas tout à fait. Réessaie !";
+ document.getElementById("web-score").textContent =
+ "Score : " + webAnswers.filter(Boolean).length + "/3";
+}
+</script>
+
+
+<section id="RYAN-DASHBOARD" style="max-width:700px;margin:40px auto;padding:25px;background:#07110b;border:1px solid #00ff88;border-radius:14px;color:white;box-shadow:0 0 18px #00ff8840;">
+<h2 style="color:#00ff88;text-align:center;">RYAN HACKING — DASHBOARD</h2>
+<p style="text-align:center;">MON ESPACE DE PROGRESSION</p>
+<div style="display:flex;justify-content:space-around;flex-wrap:wrap;gap:15px;text-align:center;">
+<div><h2 style="color:#00ff88;">3</h2><p>Modules</p></div>
+<div><h2 id="done-count" style="color:#00ff88;">0</h2><p>Terminés</p></div>
+<div><h2 id="progress-number" style="color:#00ff88;">0%</h2><p>Progression</p></div>
+</div>
+<div style="background:#183023;height:14px;border-radius:10px;overflow:hidden;">
+<div id="progress-bar" style="height:14px;width:0%;background:#00ff88;transition:width .3s;"></div>
+</div>
+<h3 style="color:#00ff88;">Mes modules</h3>
+<div id="module-list"></div>
+<p id="dashboard-status" style="color:#00ff88;text-align:center;">Formation en cours</p>
+</section>
+<script>
+// RYAN-DASHBOARD : progression locale de démonstration
+const modulesRyan = ["Linux","Web Security","Network Security"];
+let terminesRyan = JSON.parse(localStorage.getItem("ryanModules") || "[]");
+function afficherRyan() {
+ const liste = document.getElementById("module-list");
+ liste.innerHTML = "";
+ modulesRyan.forEach((nom, i) => {
+  const ligne = document.createElement("div");
+  ligne.style.cssText = "padding:12px;margin:10px 0;background:#102016;border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;";
+  const texte = document.createElement("span");
+  texte.textContent = nom + (terminesRyan.includes(i) ? " — Terminé" : " — En cours");
+  const bouton = document.createElement("button");
+  bouton.textContent = terminesRyan.includes(i) ? "Annuler" : "Terminé";
+  bouton.style.cssText = "padding:8px;background:#00ff88;border:0;border-radius:5px;cursor:pointer;";
+  bouton.onclick = () => {
+   terminesRyan = terminesRyan.includes(i) ? terminesRyan.filter(x => x !== i) : [...terminesRyan, i];
+   localStorage.setItem("ryanModules", JSON.stringify(terminesRyan));
+   afficherRyan();
+  };
+  ligne.append(texte, bouton);
+  liste.appendChild(ligne);
+ });
+ const n = terminesRyan.length;
+ const pct = Math.round(n / modulesRyan.length * 100);
+ document.getElementById("done-count").textContent = n;
+ document.getElementById("progress-number").textContent = pct + "%";
+ document.getElementById("progress-bar").style.width = pct + "%";
+ document.getElementById("dashboard-status").textContent = n === 3 ? "Tous les modules sont terminés !" : "Formation en cours";
+}
+afficherRyan();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RYAN HACKING</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;background:#030806;color:#eafff3;
+font-family:Arial,sans-serif;
+}
+header{
+padding:25px;text-align:center;
+border-bottom:1px solid #00ff88;
+box-shadow:0 0 20px #00ff8840;
+}
+h1{color:#00ff88;font-size:38px;text-shadow:0 0 18px #00ff88}
+nav{display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
+a{color:#00ff88;text-decoration:none}
+nav a:hover{color:white;text-shadow:0 0 12px #00ff88}
+.hero{text-align:center;padding:75px 20px}
+.hero h2{font-size:32px}
+.hero p{color:#a6c9b5}
+.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:20px}
+.card{
+background:#0b1710;border:1px solid #00ff88;
+border-radius:14px;padding:25px;width:270px;
+box-shadow:0 0 12px #00ff8830;
+transition:.3s;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 0 25px #00ff88}
+button{
+background:#00ff88;color:#001b0c;border:0;
+padding:13px 25px;border-radius:8px;
+font-weight:bold;cursor:pointer;
+}
+footer{text-align:center;padding:30px;color:#8aa99a}
+</style>
+</head>
+<body>
+<header>
+<h1>RYAN HACKING</h1>
+<nav>
+<a href="index.html">ACCUEIL</a>
+<a href="projets.html">PROJETS</a>
+<a href="connexion.html">CONNEXION DÉMO</a>
+<a href="laboratoire.html">CYBERLAB</a>
+</nav>
+</header>
+<section class="hero">
+<h2>Bienvenue dans mon univers numérique</h2>
+<p>Linux • Développement Web • Cybersécurité</p>
+<button onclick="location.href='projets.html'">DÉCOUVRIR MES PROJETS</button>
+<button onclick="location.href='laboratoire.html'">OUVRIR CYBERLAB</button>
+</section>
+<section class="cards">
+<div class="card">
+<h3>LINUX</h3>
+<p>Découverte des systèmes et commandes Linux.</p>
+</div>
+<div class="card">
+<h3>WEB DEVELOPMENT</h3>
+<p>Création de sites avec HTML, CSS et JavaScript.</p>
+</div>
+<div class="card">
+<h3>CYBERSÉCURITÉ</h3>
+<p>Apprentissage de la sécurité dans un laboratoire personnel.</p>
+</div>
+</section>
+<footer>© 2026 RYAN HACKING — Portfolio personnel</footer>
+
+
+<section id="ryan-terminal" style="max-width:650px;margin:45px auto;padding:22px;background:#050b08;border:1px solid #00ff88;border-radius:12px;box-shadow:0 0 20px #00ff8840;">
+<h2 style="color:#00ff88;text-align:center;">RYAN TERMINAL</h2>
+<div id="terminal-output" style="color:#00ff88;font-family:monospace;white-space:pre-wrap;min-height:150px;">RYAN HACKING - TERMINAL DEMO
+Tape help pour commencer.
+</div>
+<div style="display:flex;gap:8px;margin-top:15px;">
+<span style="color:#00ff88;font-family:monospace;">$</span>
+<input id="terminal-input" placeholder="Tape une commande..." style="flex:1;min-width:0;background:#101a13;color:#00ff88;border:1px solid #00ff88;padding:10px;">
+<button id="terminal-send" style="background:#00ff88;border:0;padding:10px;cursor:pointer;">OK</button>
+</div>
+</section>
+<script>
+const output = document.getElementById("terminal-output");
+const input = document.getElementById("terminal-input");
+
+function runDemo() {
+ const cmd = input.value.trim().toLowerCase();
+ let answer = "";
+ if (cmd === "help") answer = "Commandes disponibles : help, about, skills, projects, clear";
+ else if (cmd === "about") answer = "RYAN HACKING : laboratoire personnel d'apprentissage.";
+ else if (cmd === "skills") answer = "Linux\nDéveloppement Web\nCybersécurité défensive";
+ else if (cmd === "projects") answer = "Mes projets : site web, laboratoire Linux, exercices de cybersécurité.";
+ else if (cmd === "clear") { output.textContent = ""; input.value = ""; return; }
+ else if (cmd === "") answer = "Tape help pour voir les commandes.";
+ else answer = "Commande inconnue. Tape help.";
+ output.textContent += "\n$ " + cmd + "\n" + answer + "\n";
+ input.value = "";
+}
+document.getElementById("terminal-send").addEventListener("click", runDemo);
+input.addEventListener("keydown", e => { if (e.key === "Enter") runDemo(); });
+</script>
+
+</body>
+</html>
